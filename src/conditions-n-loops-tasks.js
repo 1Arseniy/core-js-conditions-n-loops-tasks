@@ -112,10 +112,47 @@ function isIsoscelesTriangle(a, b, c) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  const str = `${num}`;
+  let rNum = '';
+  let ten;
+  let twoNumber;
+  if (str.length > 1) {
+    for (let i = 0; i < str.length; i += 1) {
+      if (i === 0) {
+        ten = str[i];
+      }
+      if (i === 1) {
+        twoNumber = str[i];
+      }
+    }
+  }
+  if (str.length === 1) {
+    twoNumber = num;
+  }
+  const romanNum = {
+    1: 'I',
+    2: 'II',
+    3: 'III',
+    4: 'IV',
+    5: 'V',
+    6: 'VI',
+    7: 'VII',
+    8: 'VIII',
+    9: 'IX',
+    10: 'X',
+  };
+  if (ten || twoNumber === 0) {
+    for (let j = 0; j < ten; j += 1) {
+      rNum += 'X';
+    }
+  }
+  if (twoNumber === '0') {
+    return rNum;
+  }
+  rNum += romanNum[twoNumber];
+  return rNum;
 }
-
 /**
  * Converts a number to a string, replacing digits with words.
  * In this task, the use of methods of the String and Array classes is not allowed.
@@ -173,10 +210,18 @@ function convertNumberToString(numberStr) {
  *  '0123210'   => true
  *  'qweqwe'    => false
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  let str2 = '';
+  for (let i = str.length - 1; i >= 0; i -= 1) {
+    str2 = `${str2}${str[i]}`;
+  }
+  if (str === str2) {
+    str2 = true;
+  } else {
+    str2 = false;
+  }
+  return str2;
 }
-
 /**
  * Finds the first occurrence of a letter in a string.
  * In this task, the use of methods of the String and Array classes is not allowed.
@@ -286,8 +331,22 @@ function getSpiralMatrix(/* size */) {
  */
 function rotateMatrix(/* matrix */) {
   throw new Error('Not implemented');
+  /*   const firstArr = matrix;
+  const lengthFirst = matrix.length;
+  const lenght = matrix.length * 2;
+  for (let i = matrix.length; i < lenght; i += 1) {
+    matrix[i] = [];
+  }
+  for (let i = lengthFirst; i < lenght; i += 1) {
+    const secondArr = [];
+    let index = 0;
+    for (let j = matrix.length - lengthFirst; j < matrix.length; j += 1) {
+      matrix[j][0] = matrix[index][index];
+      index += 1;
+    }
+  }
+  return matrix; */
 }
-
 /**
  * Sorts an array of numbers in ascending order in place.
  * Employ any sorting algorithm of your choice.
